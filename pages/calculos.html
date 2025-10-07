@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Cálculos</title>
+
+    <link rel="stylesheet" href="../assets/css/global.css">
+
+    <link rel="stylesheet" href="../assets/css/calculos.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=VT323&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="calculos-container">
+        <aside class="sidebar">
+            <a href="URL_DA_PAGINA_ANTERIOR" class="back-button">&lt;</a>
+            <p class="sidebar-text">
+                PREENCHA OS CAMPOS COM AS OPÇÕES DESEJADAS PARA REALIZAR O CÁLCULO!
+            </p>
+            <img src="/assets/images/NEXUS.png" alt="Mascote robô" class="mascot">
+        </aside>
+
+        <main class="form-section">
+            <h1 class="title">CÁLCULOS</h1>
+
+            <form id="formCalculo">
+                <div class="input-group">
+                    <label for="rota">Selecione a rota cadastrada</label>
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select-trigger" id="rota" tabindex="0">
+                            <span class="selected-value"></span>
+                        </div>
+                        <ul class="custom-options">
+                            <li data-value="sp-ba">Origem: São Paulo / Destino: Bahia</li>
+                            <li data-value="sp-mg">Origem: São Paulo / Destino: Minas Gerais</li>
+                        </ul>
+                        <input type="hidden" name="rota_selecionada">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="veiculo">Selecione o veículo cadastrado</label>
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select-trigger" id="veiculo" tabindex="0">
+                            <span class="selected-value"></span>
+                        </div>
+                        <ul class="custom-options">
+                            <li data-value="abc-1234">ABC-1234 Mercedes Actros</li>
+                            <li data-value="def-5678">DEF-5678 Volkswagen Delivery</li>
+                        </ul>
+                        <input type="hidden" name="veiculo_selecionado">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">CALCULAR</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculos.js" defer></script>
+</body>
+
+</html>
