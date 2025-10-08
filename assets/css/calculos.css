@@ -150,6 +150,40 @@ body {
     background-color: #f0f8f7;
 }
 
+/* --- ESTILOS ADICIONADOS PARA O CAMPO DE RESULTADO --- */
+.result-group {
+    margin-top: 50px;
+}
+
+.result-display {
+    border-bottom: 2px solid var(--light-gray);
+    padding: 8px 0;
+    min-height: 30px;
+}
+
+.total-value {
+    color: var(--dark-text);
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+}
+
+.formula-container {
+    text-align: right;
+    margin-top: 5px;
+}
+
+.formula-details {
+    display: inline-block;
+    font-size: 12px;
+    color: #007BFF;
+    background-color: #e7f3ff;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+/* --- FIM DOS ESTILOS ADICIONADOS --- */
+
+
 .btn-submit {
     background-color: var(--cyan);
     color: var(--white);
@@ -160,7 +194,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     display: block;
-    margin: 60px auto 0;
+    margin: 40px auto 0;
     box-shadow: 0 4px 15px rgba(46, 196, 182, 0.4);
     transition: all 0.3s ease;
     width: auto;
@@ -192,6 +226,6 @@ body {
 
     .btn-submit {
         width: 100%;
-        margin-top: 40px;
+        margin-top: 30px;
     }
 }
