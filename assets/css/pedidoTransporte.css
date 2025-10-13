@@ -5,6 +5,7 @@
   font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
 }
 
+
 body {
   background-color: #ffffff;
   display: flex;
@@ -24,7 +25,6 @@ body {
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
-/* Painel esquerdo */
 .left-panel {
   width: 35%;
   background-color: #ff7a1c;
@@ -59,6 +59,9 @@ body {
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 2px;
+  font-family: var(--font-pixel);
+  font-size: 24px;
+  line-height: 1.4;
 }
 
 .robo {
@@ -66,7 +69,6 @@ body {
   margin-top: 40px;
 }
 
-/* Painel direito */
 .right-panel {
   width: 65%;
   padding: 40px 60px;
@@ -90,7 +92,6 @@ body {
   color: #41c9d3;
 }
 
-/* Formulário */
 .formulario {
   display: flex;
   flex-direction: column;
@@ -105,10 +106,12 @@ body {
   padding: 15px;
   font-size: 15px;
   color: #333;
+  width: 100%;
 }
 
 .formulario input::placeholder {
-  color: #66d2d9;
+  color: #3f9da3; 
+  font-weight: normal; 
 }
 
 .formulario button {
@@ -122,6 +125,7 @@ body {
   width: 140px;
   align-self: center;
   font-weight: bold;
+  margin-top: 20px; 
 }
 
 .formulario button:hover {
