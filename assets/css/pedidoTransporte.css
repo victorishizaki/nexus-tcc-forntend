@@ -1,10 +1,14 @@
+/* ADICIONADO: Definição das variáveis de fonte */
+:root {
+    --font-pixel: 'VT323', monospace;
+    --font-main: 'Roboto', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
 }
-
 
 body {
   background-color: #ffffff;
@@ -12,6 +16,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: var(--font-main);
 }
 
 .container {
@@ -56,12 +61,10 @@ body {
 .message {
   margin-top: 100px;
   text-align: center;
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: 2px;
   font-family: var(--font-pixel);
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.4;
+  letter-spacing: 1px;
 }
 
 .robo {
@@ -106,12 +109,11 @@ body {
   padding: 15px;
   font-size: 15px;
   color: #333;
-  width: 100%;
+  font-family: var(--font-main);
 }
 
 .formulario input::placeholder {
-  color: #3f9da3; 
-  font-weight: normal; 
+  color: #66d2d9;
 }
 
 .formulario button {
@@ -125,9 +127,14 @@ body {
   width: 140px;
   align-self: center;
   font-weight: bold;
-  margin-top: 20px; 
+  font-family: var(--font-main);
 }
 
 .formulario button:hover {
   background-color: #35b8c1;
+}
+
+.home-icon img {
+  width: 50px;
+  height: 50px;
 }

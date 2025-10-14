@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pedido Transporte</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/assets/css/pedidoTransporte.css" />
 </head>
-
 <body>
   <div class="container">
     <div class="left-panel">
       <a href="pedidoHome.html">
         <div class="back-btn">&lt;</div>
       </a>
-
+      
       <div class="message">
         <p>LEMBRE-SE DE MANTER<br>ESSES DADOS SEMPRE<br>ATUALIZADOS ✅</p>
       </div>
@@ -24,22 +25,20 @@
     <div class="right-panel">
       <div class="header">
         <h1>Pedido Transporte</h1>
-        <a href="/index.html">
-          <div class="home-icon">🏠</div>
-        </a>
+        <a href="/index.html"><div class="home-icon"><img src="/assets/icons/home.svg" alt=""></div></a>
       </div>
 
-      <form class="formulario">
-        <input type="text" placeholder="Veículo" />
-        <input type="text" placeholder="Rota" />
-        <input type="date" placeholder="Data Início" />
-        <input type="date" placeholder="Data Fim" />
-        <input type="text" placeholder="Status" />
+      <form class="formulario" id="form-pedido">
+        <input type="text" placeholder="Veículo" id="veiculo" required />
+        <input type="text" placeholder="Rota (Ex: São Paulo - Bahia)" id="rota" required />
+        <input type="date" placeholder="Data Início" id="data-inicio" required />
+        <input type="date" placeholder="Data Fim" id="data-fim" required />
+        <input type="text" placeholder="Status" id="status" required />
 
         <button type="submit">CRIAR</button>
       </form>
     </div>
   </div>
+    <script src="/assets/js/pedidoTransporte.js"></script>
 </body>
-
 </html>
