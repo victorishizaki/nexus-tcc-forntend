@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorista - Tela Inteira</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f0f2f5; 
+        }
+
+        .screen-container {
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #40C0C0;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background-color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            color: #40C0C0;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s;
+        }
+
+        .back-button:hover {
+            opacity: 0.8;
+        }
+
+        .header-title {
+            flex-grow: 1;
+            text-align: center;
+            margin-right: 35px;
+        }
+
+        .main-content {
+            padding: 40px 25px;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .add-request-button {
+            width: 100%;
+            background-color: transparent;
+            border: 2px solid #FF9800;
+            border-radius: 50px;
+            padding: 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .add-request-button .plus-icon {
+            color: #FF9800;
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .add-request-button:hover {
+            background-color: #fff8e1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="screen-container">
+        <header class="header">
+            <button class="back-button" id="backBtn">&lt;</button>
+            <h1 class="header-title">MOTORISTA</h1>
+        </header>
+
+        <main class="main-content">
+            <a href="pedidoMotorista.html">
+                <button class="add-request-button" id="addBtn">
+                <div class="plus-icon">+</div>
+            </button>
+            </a>
+            
+        </main>
+    </div>
+
+    <script>
+
+        const backButton = document.getElementById('backBtn');
+        backButton.addEventListener('click', () => {
+            window.location.href = '/index.html';
+        });
+
+        const addButton = document.getElementById('addBtn');
+        addButton.addEventListener('click', () => {
+            alert('Ação: Abrir tela para cadastrar um novo motorista.');
+        });
+    </script>
+
+</body>
+</html>
