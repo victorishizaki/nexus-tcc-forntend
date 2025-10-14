@@ -3,7 +3,6 @@
     --cyan: #2EC4B6;
     --white: #FFFFFF;
     --light-gray: #E0E0E0;
-    --dark-text: #333;
     --font-pixel: 'VT323', monospace;
     --font-main: 'Roboto', sans-serif;
 }
@@ -75,7 +74,7 @@ body {
 }
 
 .title {
-    color: var(--cyan);
+    color: #41c9d3;
     text-align: center;
     margin-bottom: 50px;
     font-weight: bold;
@@ -87,7 +86,7 @@ body {
 
 .input-group label {
     font-size: 14px;
-    color: #888;
+    color: #41c9d3;
     margin-bottom: 8px;
     display: block;
 }
@@ -97,12 +96,12 @@ body {
 }
 
 .custom-select-trigger {
-    border-bottom: 2px solid var(--light-gray);
+    border-bottom: 2px solid #41c9d3;
     padding: 8px 0;
     cursor: pointer;
     position: relative;
     height: 30px;
-    color: #888;
+    color: #41c9d3;
 }
 
 .custom-select-trigger .selected-value {
@@ -144,7 +143,6 @@ body {
 .custom-options li {
     padding: 12px 15px;
     cursor: pointer;
-    color: var(--dark-text);
 }
 .custom-options li:hover {
     background-color: #f0f8f7;
@@ -156,13 +154,13 @@ body {
 }
 
 .result-display {
-    border-bottom: 2px solid var(--light-gray);
+    border-bottom: 2px solid #41c9d3;
     padding: 8px 0;
     min-height: 30px;
 }
 
 .total-value {
-    color: var(--dark-text);
+    color: #41c9d3;
     font-size: 18px;
     font-weight: bold;
     display: block;
@@ -176,8 +174,8 @@ body {
 .formula-details {
     display: inline-block;
     font-size: 12px;
-    color: #007BFF;
-    background-color: #e7f3ff;
+    color: #41c9d3;
+    background-color: #86e4eb;
     padding: 4px 8px;
     border-radius: 4px;
 }
@@ -185,7 +183,7 @@ body {
 
 
 .btn-submit {
-    background-color: var(--cyan);
+    background-color: #41c9d3;
     color: var(--white);
     border: none;
     border-radius: 50px;
@@ -228,4 +226,8 @@ body {
         width: 100%;
         margin-top: 30px;
     }
+}
+
+.data {
+    color: #35b8c1;
 }

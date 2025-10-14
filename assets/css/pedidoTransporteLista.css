@@ -1,0 +1,137 @@
+:root {
+    --cyan: #2EC4B6;
+    --orange: #F97B22;
+    --white: #FFFFFF;
+    --background: #f0f2f5;
+    --text-color: #555;
+    --font-main: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: var(--cyan);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+}
+
+.header .back-btn {
+    background: var(--white);
+    color: var(--cyan);
+    font-size: 24px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; /* Faz o título ocupar o espaço restante */
+    margin-right: 40px; /* Compensa o espaço do botão de voltar */
+}
+
+/* Lista de Pedidos */
+.pedidos-list {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.pedido-item {
+    margin-bottom: 20px;
+}
+
+.pedido-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pedido-icon {
+    background-color: var(--orange);
+    color: var(--white);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    flex-shrink: 0;
+}
+
+.pedido-details p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.pedido-details p span {
+    font-weight: bold;
+}
+
+.pedido-divider {
+    border: none;
+    height: 1.5px;
+    background-color: var(--orange);
+    margin-top: 15px;
+    position: relative;
+}
+
+.pedido-divider::after {
+    content: '↓';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--orange);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* Botão Adicionar */
+.add-button {
+    border: 2px solid var(--orange);
+    color: var(--orange);
+    font-size: 40px;
+    font-weight: lighter;
+    border-radius: 50px;
+    width: calc(100% - 40px); /* Largura total menos o padding */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 20px 30px 20px; /* Espaçamento inferior e laterais */
+}
