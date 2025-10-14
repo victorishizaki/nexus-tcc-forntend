@@ -137,3 +137,14 @@ body {
   height: 50px;
   width: 50px;
 }
+
+@font-face {
+  font-family: 'Font'; 
+  src: url('../fonts/DigitalNumbers-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.message {
+  font-family: 'Font', sans-serif;
+}
