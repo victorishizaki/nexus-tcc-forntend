@@ -103,13 +103,17 @@ body {
 }
 
 .formulario input {
-  background-color: #caf3f5;
   border: none;
   border-radius: 6px;
   padding: 15px;
   font-size: 15px;
-  color: #333;
-  font-family: var(--font-main);
+  color: #41c9d3;
+  border-bottom: 2px solid #41c9d3;
+
+}
+
+.formulario input:focus {
+  outline: none;
 }
 
 .formulario input::placeholder {
@@ -134,7 +138,7 @@ body {
   background-color: #35b8c1;
 }
 
-.home-icon img {
-  width: 50px;
+.casinha {
   height: 50px;
+  width: 50px;
 }
