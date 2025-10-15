@@ -5,6 +5,12 @@
     --background: #f0f2f5;
     --text-color: #555;
     --font-main: 'Roboto', sans-serif;
+    --color-edit: #3498db;
+    --color-delete: #e74c3c;
+    --color-status-planejada: #f1c40f; /* Amarelo */
+    --color-status-em-rota: #2980b9; /* Azul */
+    --color-status-concluida: #27ae60; /* Verde */
+    --color-status-cancelada: #95a5a6; /* Cinza */
 }
 
 * {
@@ -26,9 +32,10 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
-/* Cabeçalho */
+/* --- Cabeçalho --- */
 .header {
     background-color: var(--cyan);
     color: var(--white);
@@ -37,6 +44,7 @@ body {
     padding: 15px 20px;
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 
 .header .back-btn {
@@ -51,87 +59,190 @@ body {
     align-items: center;
     border-radius: 50%;
     text-decoration: none;
+    transition: transform 0.2s;
+}
+.header .back-btn:hover {
+    transform: scale(1.05);
 }
 
 .header h1 {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    flex-grow: 1; /* Faz o título ocupar o espaço restante */
-    margin-right: 40px; /* Compensa o espaço do botão de voltar */
+    flex-grow: 1; 
+    margin-right: 40px; 
 }
 
-/* Lista de Pedidos */
+/* --- Lista de Pedidos --- */
 .pedidos-list {
-    padding: 20px;
+    padding: 20px 20px 80px 20px; /* Padding inferior para o botão de adicionar */
     flex-grow: 1;
 }
 
 .pedido-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .pedido-content {
     display: flex;
     align-items: center;
     gap: 15px;
+    cursor: pointer; /* Indica que clicar na área pode fazer algo */
 }
 
 .pedido-icon {
-    background-color: var(--orange);
-    color: var(--white);
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 24px;
     flex-shrink: 0;
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Cores do Ícone e Badge baseadas no Status */
+.status-planejada { background-color: var(--color-status-planejada); }
+.status-em-rota { background-color: var(--color-status-em-rota); }
+.status-concluida { background-color: var(--color-status-concluida); }
+.status-cancelada { background-color: var(--color-status-cancelada); }
+
+.pedido-details {
+    flex-grow: 1;
 }
 
 .pedido-details p {
     margin: 2px 0;
     font-size: 14px;
-    color: var(--text-color);
 }
 
 .pedido-details p span {
     font-weight: bold;
+    color: #333;
 }
 
-.pedido-divider {
+/* --- Botão Expandir --- */
+.expand-btn {
+    background: none;
     border: none;
-    height: 1.5px;
-    background-color: var(--orange);
-    margin-top: 15px;
-    position: relative;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--cyan);
+    transition: transform 0.3s;
+    margin-left: auto;
 }
 
-.pedido-divider::after {
-    content: '↓';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--orange);
-    font-size: 20px;
+.expand-btn.open .arrow {
+    transform: rotate(180deg);
+}
+.arrow {
+    display: block;
+    transition: transform 0.3s;
     font-weight: bold;
 }
 
 
-/* Botão Adicionar */
+/* --- Conteúdo Expansível (Dropdown) --- */
+.pedido-expanded-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    padding: 0 10px;
+}
+
+.pedido-expanded-content.visible {
+    max-height: 500px; /* Valor grande o suficiente para expandir */
+    padding: 10px;
+}
+
+.expanded-divider {
+    border: none;
+    height: 1px;
+    background-color: #eee;
+    margin: 10px 0 15px 0;
+}
+
+.pedido-expanded-content p {
+    margin: 5px 0;
+    font-size: 13px;
+    color: #777;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--white);
+    /* Cores aplicadas via JS class (status-planejada, etc.) */
+}
+
+/* --- Botões de Ação --- */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.action-buttons button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: opacity 0.2s;
+}
+
+.edit-btn {
+    background-color: var(--color-edit);
+    color: var(--white);
+}
+
+.delete-btn {
+    background-color: var(--color-delete);
+    color: var(--white);
+}
+
+.action-buttons button:hover {
+    opacity: 0.9;
+}
+
+
+/* --- Botão Adicionar (Fixo) --- */
 .add-button {
     border: 2px solid var(--orange);
-    color: var(--orange);
+    background-color: var(--orange); /* Mudei para preenchido */
+    color: var(--white);
     font-size: 40px;
     font-weight: lighter;
     border-radius: 50px;
-    width: calc(100% - 40px); /* Largura total menos o padding */
+    width: calc(100% - 40px);
     height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    margin: 0 20px 30px 20px; /* Espaçamento inferior e laterais */
+    margin: 0 20px 30px 20px;
+    position: fixed; /* Fixo no fundo da tela */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 560px; /* Limita a largura em telas maiores */
+    box-shadow: 0 4px 10px rgba(249, 123, 34, 0.5);
+    transition: background-color 0.2s;
+}
+
+.add-button:hover {
+    background-color: #e76c1a;
 }

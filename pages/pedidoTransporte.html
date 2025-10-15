@@ -1,44 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedido Transporte</title>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Pedido Transporte</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/css/pedidoTransporte.css" />
+ <link rel="stylesheet" href="/assets/css/pedidoTransporte.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="left-panel">
-      <a href="pedidoHome.html">
-        <div class="back-btn">&lt;</div>
-      </a>
-      
-      <div class="message">
-        <p>LEMBRE-SE DE MANTER<br>ESSES DADOS SEMPRE<br>ATUALIZADOS ✅</p>
-      </div>
-      <img src="/assets/images/NEXUS.png" alt="Robo Assistente" class="robo" />
-    </div>
-
-    <div class="right-panel">
-      <div class="header">
-        <h1>Pedido Transporte</h1>
-        <a href="/index.html"><div class="home-icon"><img class = "casinha" src="/assets/icons/home.svg" alt=""></div></a>
-      </div>
-
-      <form class="formulario" id="form-pedido">
-        <input type="text" placeholder="Veículo" id="veiculo" required />
-        <input type="text" placeholder="Rota (Ex: São Paulo - Bahia)" id="rota" required />
-        <input type="date" placeholder="Data Início" id="data-inicio" required />
-        <input type="date" placeholder="Data Fim" id="data-fim" required />
-        <input type="text" placeholder="Status" id="status" required />
-
-        <button type="submit">CRIAR</button>
-      </form>
-    </div>
+ <div class="container">
+  <div class="left-panel">
+   <a href="pedidoHome.html">
+    <div class="back-btn">&lt;</div>
+   </a>
+   
+   <div class="message">
+    <p>LEMBRE-SE DE MANTER<br>ESSES DADOS SEMPRE<br>ATUALIZADOS ✅</p>
+   </div>
+   <img src="/assets/images/NEXUS.png" alt="Robo Assistente" class="robo" />
   </div>
-    <script src="/assets/js/pedidoTransporte.js"></script>
+
+  <div class="right-panel">
+   <div class="header">
+    <h1>Pedido Transporte</h1>
+    <a href="/index.html"><div class="home-icon"><img class = "casinha" src="/assets/icons/home.svg" alt=""></div></a>
+   </div>
+
+   <form class="formulario" id="form-pedido">
+        <div class="custom-select-wrapper veiculo-select-wrapper">
+            <div class="custom-select-trigger" id="veiculo-trigger" tabindex="0">
+                <span class="selected-value">Selecione o Veículo</span>
+            </div>
+            <ul class="custom-options" id="veiculo-options">
+                </ul>
+            <input type="hidden" name="veiculo_selecionado" id="veiculo-id-input" required>
+        </div>
+
+        <div class="custom-select-wrapper rota-select-wrapper">
+            <div class="custom-select-trigger" id="rota-trigger" tabindex="0">
+                <span class="selected-value">Selecione a Rota</span>
+            </div>
+            <ul class="custom-options" id="rota-options">
+                </ul>
+            <input type="hidden" name="rota_selecionada" id="rota-id-input" required>
+        </div>
+
+   <input type="text" placeholder="Data início do percurso (DD/MM/AAAA)" id="data-inicio" required />
+   <input type="text" placeholder="Data fim do percurso (DD/MM/AAAA)" id="data-fim" required />
+   
+    <div class="custom-select-wrapper status-select-wrapper">
+        <div class="custom-select-trigger" id="status-trigger" tabindex="0">
+            <span class="selected-value">Selecione o Status</span>
+        </div>
+        <ul class="custom-options" id="status-options">
+            <li data-value="PLANEJADA">PLANEJADA</li>
+            <li data-value="EM ROTA">EM ROTA</li>
+            <li data-value="CONCLUIDA">CONCLUÍDA</li>
+            <li data-value="CANCELADA">CANCELADA</li>
+        </ul>
+        <input type="hidden" name="status_selecionado" id="status-input" required>
+    </div>
+
+   <button type="submit">CRIAR</button>
+   </form>
+  </div>
+ </div>
+   <script src="/assets/js/pedidoTransporte.js"></script>
 </body>
 </html>

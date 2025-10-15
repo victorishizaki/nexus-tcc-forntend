@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos de Transporte - Lista</title>
     <link rel="stylesheet" href="/assets/css/globalHome.css">
-    <title>Pedido Transporte - Tela Inteira</title>
 </head>
+
 <body>
 
     <div class="screen-container">
@@ -17,21 +19,26 @@
         <main class="main-content">
             <a href="pedidoTransporte.html">
                 <button class="add-request-button" id="addBtn">
-                <div class="plus-icon">+</div>
-            </button>
+                    <div class="plus-icon">+</div>
+                </button>
             </a>
-            
+
+            <div id="pedidos-list-container">
+                <p style="text-align: center; color: #40C0C0;">Carregando pedidos...</p>
+            </div>
         </main>
     </div>
 
     <script>
-
+        // Lógica simples do botão Voltar (mantida no HTML)
         const backButton = document.getElementById('backBtn');
         backButton.addEventListener('click', () => {
             window.location.href = '/index.html';
         });
-
     </script>
 
+    <script src="/assets/js/pedidoHome.js"></script>
+
 </body>
+
 </html>
