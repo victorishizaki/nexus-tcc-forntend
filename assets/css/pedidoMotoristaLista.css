@@ -1,0 +1,169 @@
+:root {
+    --cyan: #40C0C0;
+    --orange: #F97B22;
+    --white: #FFFFFF;
+    --background: #f0f2f5;
+    --text-color: #555;
+    --font-main: 'Roboto', sans-serif;
+    --edit-blue: #3498db;   /* Cor para o botão de editar */
+    --delete-red: #e74c3c; /* Cor para o botão de excluir */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* --- Cabeçalho --- */
+.header {
+    background-color: var(--cyan);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .back-btn {
+    background: var(--white);
+    color: var(--cyan);
+    font-size: 24px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+.header .back-btn:hover {
+    transform: scale(1.05);
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; 
+    margin-right: 40px; 
+}
+
+/* --- Lista de Motoristas --- */
+.motoristas-list {
+    padding: 20px 20px 100px 20px;
+    flex-grow: 1;
+}
+
+.motorista-item {
+    background-color: #ffffff;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.motorista-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    color: var(--white);
+    background-color: var(--orange);
+}
+
+.motorista-details {
+    flex-grow: 1;
+}
+
+.motorista-details p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.motorista-details .nome {
+    font-weight: bold;
+    color: var(--orange);
+    font-size: 16px;
+}
+
+/* --- NOVO: Botões de Ação (Lápis e Lixeira) --- */
+.action-buttons {
+    display: flex;
+    gap: 15px; /* Espaço entre os botões */
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.2s;
+}
+
+.action-btn:hover {
+    transform: scale(1.2);
+}
+
+.edit-btn {
+    color: var(--edit-blue);
+}
+
+.delete-btn {
+    color: var(--delete-red);
+}
+
+/* --- Botão Adicionar (Fixo) --- */
+.add-button {
+    border: 2px dashed var(--orange);
+    background-color: var(--white);
+    color: var(--orange);
+    font-size: 40px;
+    font-weight: lighter;
+    border-radius: 50px;
+    width: calc(100% - 40px);
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 20px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 560px;
+    transition: all 0.2s;
+}
+
+.add-button:hover {
+    background-color: #fff8f2;
+    border-style: solid;
+}

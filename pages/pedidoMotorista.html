@@ -1,43 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedido Transporte</title>
-  <link rel="stylesheet" href="../assets/css/pedidoMotorista.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Motorista</title>
+    <link rel="stylesheet" href="../assets/css/pedidoMotorista.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="left-panel">
-      <a href="pedidoHome.html">
-        <div class="back-btn">&lt;</div>
-      </a>
-      
-      <div class="message">
-        <p>LEMBRE-SE DE MANTER<br>ESSES DADOS SEMPRE<br>ATUALIZADOS ✅</p>
-      </div>
-      <img src="../assets/images/NEXUS.png" alt="Robo Assistente" class="robo" />
+    <div class="container">
+        <div class="left-panel">
+            <!-- Corrigido o link para a página de lista correta -->
+            <a href="motoristaHome.html">
+                <div class="back-btn">&lt;</div>
+            </a>
+            <div class="message">
+                <p>LEMBRE-SE DE MANTER<br>ESSES DADOS SEMPRE<br>ATUALIZADOS ✅</p>
+            </div>
+            <img src="../assets/images/NEXUS.png" alt="Robo Assistente" class="robo" />
+        </div>
+
+        <div class="right-panel">
+            <div class="header">
+                <h1 id="form-title">Cadastro de Motorista</h1>
+                <a href="/index.html"><img src="../assets/icons/home.svg" alt="Ícone de Início" class="casinha"></a>
+            </div>
+
+            <form class="formulario" id="motorista-form">
+                <input type="text" id="nome" placeholder="Nome" required />
+                <input type="text" id="cpf" placeholder="CPF" required maxlength="14" />
+                <input type="text" id="cnh" placeholder="CNH" required maxlength="11" />
+                <input type="tel" id="telefone" placeholder="Telefone" maxlength="15" />
+                <input type="text" id="status" placeholder="Status" />
+                <input type="text" id="custo-km" placeholder="Custo Km" />
+                <input type="text" id="id-veiculo" placeholder="Id Veiculo" />
+                
+                <button type="submit" class="submit-btn" id="submit-btn">CADASTRAR</button>
+            </form>
+        </div>
     </div>
 
-    <div class="right-panel">
-      <div class="header">
-        <h1>Cadastro de Motorista</h1>
-        <img src="../assets/icons/home.svg" alt="" class="casinha">
-      </div>
+    <script>
+        // Mapeamento dos elementos do formulário
+        const form = document.getElementById('motorista-form');
+        const formTitle = document.getElementById('form-title');
+        const submitBtn = document.getElementById('submit-btn');
+        const inputs = {
+            nome: document.getElementById('nome'),
+            cpf: document.getElementById('cpf'),
+            cnh: document.getElementById('cnh'),
+            telefone: document.getElementById('telefone'),
+            status: document.getElementById('status'),
+            custoKm: document.getElementById('custo-km'),
+            idVeiculo: document.getElementById('id-veiculo')
+        };
 
-      <form class="formulario">
-        <input type="text" placeholder="Nome" />
-        <input type="text" placeholder="CPF" />
-        <input type="text" placeholder="CNH" />
-        <input type="text" placeholder="Telefone" />
-        <input type="text" placeholder="Status" />
-        <input type="text" placeholder="Custo Km" />
-        <input type="text" placeholder="Id Veiculo" />
-        
+        // --- LÓGICA DE EDIÇÃO ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const editIndex = urlParams.get('edit');
+        let motoristas = JSON.parse(localStorage.getItem('motoristas')) || [];
 
-        <button type="submit">CRIAR</button>
-      </form>
-    </div>
-  </div>
+        // Se a URL tiver o parâmetro 'edit', preenche o formulário com os dados existentes
+        if (editIndex !== null && motoristas[editIndex]) {
+            const motoristaParaEditar = motoristas[editIndex];
+
+            formTitle.textContent = "Editar Motorista";
+            submitBtn.textContent = "SALVAR ALTERAÇÕES";
+
+            inputs.nome.value = motoristaParaEditar.nome;
+            inputs.cpf.value = motoristaParaEditar.cpf;
+            inputs.cnh.value = motoristaParaEditar.cnh;
+            inputs.telefone.value = motoristaParaEditar.telefone;
+            inputs.status.value = motoristaParaEditar.status;
+            inputs.custoKm.value = motoristaParaEditar.custoKm ? `R$ ${motoristaParaEditar.custoKm.toFixed(2).replace('.', ',')}` : '';
+            inputs.idVeiculo.value = motoristaParaEditar.idVeiculo;
+        }
+
+        // --- MÁSCARAS DE INPUT ---
+        inputs.cpf.addEventListener('input', (e) => {
+            let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+            v = v.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = v;
+        });
+        inputs.cnh.addEventListener('input', (e) => e.target.value = e.target.value.replace(/\D/g, ''));
+        inputs.telefone.addEventListener('input', (e) => {
+            let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+            v = v.replace(/^(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2');
+            e.target.value = v;
+        });
+        inputs.custoKm.addEventListener('input', (e) => {
+            let v = e.target.value.replace(/\D/g, '');
+            if (!v) { e.target.value = ''; return; }
+            v = `R$ ${(parseInt(v, 10) / 100).toFixed(2).replace('.', ',')}`;
+            e.target.value = v;
+        });
+
+        // --- LÓGICA DE SUBMISSÃO (CRIAR OU EDITAR) ---
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const custoKmValor = inputs.custoKm.value.replace('R$ ', '').replace(',', '.');
+            
+            const motoristaData = {
+                nome: inputs.nome.value,
+                cpf: inputs.cpf.value,
+                cnh: inputs.cnh.value,
+                telefone: inputs.telefone.value,
+                status: inputs.status.value,
+                custoKm: parseFloat(custoKmValor) || 0,
+                idVeiculo: inputs.idVeiculo.value
+            };
+
+            if (editIndex !== null) {
+                // Se estiver editando, atualiza o motorista na lista
+                motoristas[editIndex] = motoristaData;
+            } else {
+                // Se for novo, adiciona no final da lista
+                motoristas.push(motoristaData);
+            }
+            
+            localStorage.setItem('motoristas', JSON.stringify(motoristas));
+            // Redireciona de volta para a tela de listagem
+            window.location.href = 'pedidomotoristaLista.html';
+        });
+    </script>
 </body>
 </html>
+

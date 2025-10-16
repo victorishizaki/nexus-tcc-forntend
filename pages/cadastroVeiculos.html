@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro Veiculos</title>
-  <link rel="stylesheet" href="/assets/css/pedidoTransporte.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro Veiculos</title>
+    <link rel="stylesheet" href="../assets/css/cadastroVeiculos.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="left-panel">
-      <a href="veiculoHome.html">
-        <div class="back-btn">&lt;</div>
-      </a>
-      
-      <div class="message">
-        <p>LEMBRE-SE DE MANTER<br>ESSES DADOS SEMPRE<br>ATUALIZADOS ✅</p>
-      </div>
-      <img src="/assets/images/NEXUS.png" alt="Robo Assistente" class="robo" />
+    <div class="container">
+        <div class="left-panel">
+            <!-- Link de voltar agora aponta para a nova lista de veículos -->
+            <a href="veiculoHome.html">
+                <div class="back-btn">&lt;</div>
+            </a>
+            
+            <div class="message">
+                <p>LEMBRE-SE DE MANTER<br>ESSES DADOS SEMPRE<br>ATUALIZADOS ✅</p>
+            </div>
+            <img src="../assets/images/NEXUS.png" alt="Robo Assistente" class="robo" />
+        </div>
+
+        <div class="right-panel">
+            <div class="header">
+                <!-- ID adicionado ao título para o JS poder alterá-lo -->
+                <h1 id="form-title">Cadastro Veiculos</h1>
+                <a href="/index.html"><img src="../assets/icons/home.svg" alt="Ícone de Início" class="casinha"></a>
+            </div>
+
+            <!-- ID adicionado ao formulário -->
+            <form class="formulario" id="veiculo-form">
+                <!-- IDs adicionados a todos os inputs -->
+                <input type="text" id="placa" placeholder="Placa" required />
+                <input type="text" id="modelo" placeholder="Modelo" required />
+                <input type="text" id="tipo" placeholder="Tipo" />
+                <input type="text" id="status" placeholder="Status" />
+                <input type="text" id="capacidade" placeholder="Capacidade Kg" />
+
+                <!-- ID adicionado ao botão de submissão -->
+                <button type="submit" id="submit-btn">CRIAR</button>
+            </form>
+        </div>
     </div>
 
-    <div class="right-panel">
-      <div class="header">
-        <h1>Cadastro Veiculos</h1>
-        <img src="/assets/icons/home.svg" alt="" class="casinha">
-      </div>
-
-      <form class="formulario">
-        <input type="text" placeholder="Placa" />
-        <input type="text" placeholder="Modelo" />
-        <input type="text" placeholder="Tipo" />
-        <input type="text" placeholder="Status" />
-        <input type="text" placeholder="Capacidade Kg" />
-
-        <button type="submit">CRIAR</button>
-      </form>
-    </div>
-  </div>
+    <!-- Link para o ficheiro JavaScript -->
+    <script src="/assets/js/cadastroVeiculos.js"></script>
 </body>
 </html>
+
